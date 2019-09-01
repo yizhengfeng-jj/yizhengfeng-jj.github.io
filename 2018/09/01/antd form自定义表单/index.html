@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="react diff算法和key值作用, json_qiong">
-    <meta name="description" content="前言在知乎看到twobin大神关于react diff算法的总结，我觉得自己有必要理解记录一下，为以后更深入的react diff算法做铺垫
-diff算法diff算法的使用在我们工作中有多，比如vscode的git管理的文件，可以查看修改哪">
+    <meta name="keywords" content="antd form表单自定义组件, json_qiong">
+    <meta name="description" content="前言之前我们我们用antd表单的时候，总是想着设计能够用antd上已经有的控件，这样我们才可以用getFieldsValue获取对应的值，如果表单里面的的组件是一个不常见的组件，我们最初想法是不能设置initialValue的，或者说设置了">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>react diff算法和key值作用 | json_qiong</title>
+    <title>antd form表单自定义组件 | json_qiong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -261,13 +260,13 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        react diff算法和key值作用
+                        antd form表单自定义组件
                     </div>
                 </div>
             </div>
@@ -378,18 +377,23 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/js/" target="_blank">
-                                <span class="chip bg-color">js</span>
-                            </a>
-                        
-                            <a href="/tags/react/" target="_blank">
-                                <span class="chip bg-color">react</span>
+                            <a href="/tags/antd/" target="_blank">
+                                <span class="chip bg-color">antd</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                前端
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -403,7 +407,7 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
                
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-15
+                    2018-09-01
                 </div>
 
                 
@@ -419,26 +423,17 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在知乎看到twobin大神关于react <a href="https://zhuanlan.zhihu.com/p/20346379" target="_blank" rel="noopener">diff算法</a>的总结，我觉得自己有必要理解记录一下，为以后更深入的react diff算法做铺垫</p>
-<h3 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h3><p>diff算法的使用在我们工作中有多，比如vscode的git管理的文件，可以查看修改哪些地方，软件Beyond Compare 也是基于对文件的比较，甚至redux的扩展工具里面也有对数据的比较等等，但是react如果是基于传统的diff比较，其时间复杂度高达O(n^3)，那么一旦要渲染的节点很多，对性能会有很大的影响，那么react的diff算法做了什么改进了?</p>
-<h3 id="react-中diff算法"><a href="#react-中diff算法" class="headerlink" title="react 中diff算法"></a>react 中diff算法</h3><p>在react中diff算法是同级比较的，如下图<br><img src="https://user-images.githubusercontent.com/20452750/61574159-e952ce80-aaed-11e9-8fbd-e9c18fe62c34.png" alt="image"><br>统一颜色的框内部进行比较，当发现红色框内的两个节点不一样，那么react会删除旧集合中的节点，创造新节点，插入dom中。这样只需要遍历一次就可以渲染节点了，如果新旧集合的层级不一样怎么办了，还是一样的比较解决<br><img src="https://user-images.githubusercontent.com/20452750/61574226-1784de00-aaef-11e9-9b57-6cbef865d472.png" alt="image"><br>当遍历到第二层发现没有A了，则把A删除，当遍历到三层，发现他有字节点A，那么就创造A插入在后面</p>
-<h3 id="elment-diff"><a href="#elment-diff" class="headerlink" title="elment diff"></a>elment diff</h3><p>节点比较执行情况分为三种<br>INSERT_MARKUP：遍历新集合发现里面有的节点在旧集合里面没有，那么创造该节点，插入<br>MOVE_EXISTING：如果新集合里面的节点在旧集合里面可以找到，那么我们就只需要移动节点就行<br>REMOVE_NODE：如果旧集合的节点不在新结合里面，则需要删除该节点<br>看一下下图的比较机制<br><img src="https://user-images.githubusercontent.com/20452750/61574219-f45a2e80-aaee-11e9-82d8-ac33fc320847.png" alt="image"><br>按照之前的比较，新集合的第一个是B，旧集合的是A，发现B！==A那么删除节点A，创造节点B插入，后面的节点一次比较，但是这样的话会造成性能的浪费，因为新旧集合dom都是一样的，就是换了位置，那么这个时候改怎么解决了</p>
-<h3 id="key值的重要性"><a href="#key值的重要性" class="headerlink" title="key值的重要性"></a>key值的重要性</h3><p>解决方法就是给每一个dom增加一个唯一的标记key如下图<br><img src="https://user-images.githubusercontent.com/20452750/61574268-b27db800-aaef-11e9-8886-2b925aa49daa.png" alt="image"><br>还是新旧集合的比较，但是比较的时候，先看一下新集合里面的节点在不在老集合里面，如果在只需要移动就行，不在就新增，那么这个机制到底是怎么样子的了，下面借用twobin大神解释来说明<br>首先对新集合的节点进行循环遍历，for (name in nextChildren)，通过唯一 key 可以判断新老集合中是否存在相同的节点，if (prevChild === nextChild)，如果存在相同节点，则进行移动操作，但在移动前需要将当前节点在老集合中的位置与 lastIndex 进行比较，if (child._mountIndex &lt; lastIndex)，则进行节点移动操作，否则不执行该操作。这是一种顺序优化手段，lastIndex 一直在更新，表示访问过的节点在老集合中最右的位置（即最大的位置），如果新集合中当前访问的节点比 lastIndex 大，说明当前访问节点在老集合中就比上一个节点位置靠后，则该节点不会影响其他节点的位置，因此不用添加到差异队列中，即不执行移动操作，只有当访问的节点比 lastIndex 小时，才需要进行移动操作。</p>
-<p>以上图为例，可以更为清晰直观的描述 diff 的差异对比过程：</p>
-<ul>
-<li><p>从新集合中取得 B，判断老集合中存在相同节点 B，通过对比节点位置判断是否进行移动操作，B 在老集合中的位置 B._mountIndex = 1，此时 lastIndex = 0，不满足 child._mountIndex &lt; lastIndex 的条件，因此不对 B 进行移动操作；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，其中 prevChild._mountIndex 表示 B 在老集合中的位置，则 lastIndex ＝ 1，并将 B 的位置更新为新集合中的位置prevChild._mountIndex = nextIndex，此时新集合中 B._mountIndex = 0，nextIndex++ 进入下一个节点的判断。</p>
-</li>
-<li><p>从新集合中取得 A，判断老集合中存在相同节点 A，通过对比节点位置判断是否进行移动操作，A 在老集合中的位置 A._mountIndex = 0，此时 lastIndex = 1，满足 child._mountIndex &lt; lastIndex的条件，因此对 A 进行移动操作enqueueMove(this, child._mountIndex, toIndex)，其中 toIndex 其实就是 nextIndex，表示 A 需要移动到的位置；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，则 lastIndex ＝ 1，并将 A 的位置更新为新集合中的位置 prevChild._mountIndex = nextIndex，此时新集合中A._mountIndex = 1，nextIndex++ 进入下一个节点的判断。</p>
-</li>
-<li><p>从新集合中取得 D，判断老集合中存在相同节点 D，通过对比节点位置判断是否进行移动操作，D 在老集合中的位置 D._mountIndex = 3，此时 lastIndex = 1，不满足 child._mountIndex &lt; lastIndex的条件，因此不对 D 进行移动操作；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，则 lastIndex ＝ 3，并将 D 的位置更新为新集合中的位置 prevChild._mountIndex = nextIndex，此时新集合中D._mountIndex = 2，nextIndex++ 进入下一个节点的判断。</p>
-</li>
-<li><p>从新集合中取得 C，判断老集合中存在相同节点 C，通过对比节点位置判断是否进行移动操作，C 在老集合中的位置 C._mountIndex = 2，此时 lastIndex = 3，满足 child._mountIndex &lt; lastIndex 的条件，因此对 C 进行移动操作 enqueueMove(this, child._mountIndex, toIndex)；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，则 lastIndex ＝ 3，并将 C 的位置更新为新集合中的位置 prevChild._mountIndex = nextIndex，此时新集合中 C._mountIndex = 3，nextIndex++ 进入下一个节点的判断，由于 C 已经是最后一个节点，因此 diff 到此完成。</p>
-</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>根据以上的diff算法的总结我们可以得出以下结论</p>
-<ul>
-<li>key值必须要唯一，这里的唯一指的是相同的dom节点，新旧集合中key值是唯一，所以比较经典问题是key值对好不要是index下标</li>
-<li>dom显示和消失最好是用css控制，而不是移除节点，移除节点的性能消耗更大</li>
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>之前我们我们用antd表单的时候，总是想着设计能够用antd上已经有的控件，这样我们才可以用getFieldsValue获取对应的值，如果表单里面的的组件是一个不常见的组件，我们最初想法是不能设置initialValue的，或者说设置了没有效果，但是这样的设计可能太单一了，于是表单里面就有很多复杂的需要自己自定义的组件，那么这种情况就没有办法做了么？接下来就来说一下如何处理这种问题。</p>
+<h3 id="要满足的场景"><a href="#要满足的场景" class="headerlink" title="要满足的场景"></a>要满足的场景</h3><h4 id="场景1：getFieldsValue-可以获取到值"><a href="#场景1：getFieldsValue-可以获取到值" class="headerlink" title="场景1：getFieldsValue() 可以获取到值"></a>场景1：getFieldsValue() 可以获取到值</h4><p>这个函数是获取的组件要设置的值，那么这个值怎么设置了，经过研究发现，当一个组件被getFieldsDecorator包裹的时候，会附带一些信息，其中有一个函数名字叫onChange，只要把要返回的值传递给这个函数执行一遍，那么getFieldsValue就可以获取到值了，我们看看打印的信息<br><img src="https://user-images.githubusercontent.com/20452750/64074284-dc73ee00-ccdb-11e9-95ee-435d98641eb2.png" alt="image"><br>点击changeType打印了一下this.props发现有一个onChange函数,那么我们执行一下这个函数，设置固定值’小明’,然后点击获取值按钮看看效果</p>
+<p><img src="https://user-images.githubusercontent.com/20452750/64074192-dc272300-ccda-11e9-9108-47f44694111b.png" alt="image"><br>点击自定义组件的changeType函数，把想要传入的值写入this.props.onChange调用就可以了，那么就可以用getFieldsValue这个函数去获取了</p>
+<h4 id="场景2：initialValue有效果么"><a href="#场景2：initialValue有效果么" class="headerlink" title="场景2：initialValue有效果么"></a>场景2：initialValue有效果么</h4><p>这个场景经常出现在新建，编辑的时候我们要获取初始值，绑定到自定义组件上去，那么这种情况我们怎么去获取了，还是一样的，初始值的信息也是在this.props里面，this.poprs里面有一个value，这个value就是初始值，里面还有两个data__mate和data__field两个对象也会保留这个initialValue的内容。我们还是打印看一下<br><img src="https://upload-images.jianshu.io/upload_images/13805935-4ce08caa81996d00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这个this.props.value就是我们传入的initialValue的值，那么既然我们能拿到这个初始值，在自定义组件去设置就不难了，如上截图。</p>
+<h4 id="场景3：setFieldsValue-，getFieldsError-validateFields-isFieldsTouched-等函数会有效果么"><a href="#场景3：setFieldsValue-，getFieldsError-validateFields-isFieldsTouched-等函数会有效果么" class="headerlink" title="场景3：setFieldsValue()，getFieldsError(), validateFields(),isFieldsTouched()等函数会有效果么"></a>场景3：setFieldsValue()，getFieldsError(), validateFields(),isFieldsTouched()等函数会有效果么</h4><p>这写函数经过试验都是有效果的，setFieldsValue这个函数执行完之后，this.props.value自动会改变，并且会重新渲染，那么页面显示肯定就是你设置的那个，getFieldsError这个就是获取的报错，经验证是可以获取自定义组件报错信息的，validateFields这个执行完之后，他会去检查你的设置值，如果是’’,null,udefiend就会报错，经验证也是可以的，isFieldsTouched这个函数是如果你没有点击changeType函数返回fasle,如果点击了返回true，感觉就是检测你有没有触发this.props.onChange函数</p>
+<h4 id="场景4：自定义校验满足么"><a href="#场景4：自定义校验满足么" class="headerlink" title="场景4：自定义校验满足么"></a>场景4：自定义校验满足么</h4><p>自定义校验一个很重要的点，就是你要知道你现在组件设置的值，然后根据这个值去做判断，那么会不会返回这个设置值就是关键了,看如下截图<br><img src="https://upload-images.jianshu.io/upload_images/13805935-b135000d9b0524e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>下面这个图告诉我们当我们自定义检测的时候，我们是可以拿到设置的值得，从而去设置错误信息</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>因为自定义组件被getFieldDecorator包装后会自带onChange函数，所以自定义组件的函数尽量不要再有onChange，换一个其他名字</li>
+<li>因为initialValue的值是写在this.props.value里面的，所以自定义组件也不要在传入value属性了，会报一个警告<br><img src="https://upload-images.jianshu.io/upload_images/13805935-06c41da6696b52ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>调用this.props.onChange或者setFieldsValue组件会被重新渲染一次（很重要）</li>
 </ul>
 
             </div>
@@ -598,9 +593,9 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《react diff算法和key值作用》
+                    《antd form表单自定义组件》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/07/15/react-diff算法和key值作用/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/09/01/antd form自定义表单/" property="cc:attributionName"
                rel="cc:attributionURL">
                 json_qiong
             </a> 采用
@@ -644,24 +639,25 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/01/antd form自定义表单/">
+                <a href="/2018/11/21/正则讲解/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="antd form表单自定义组件">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="正则讲解">
                         
-                        <span class="card-title">antd form表单自定义组件</span>
+                        <span class="card-title">正则讲解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言之前我们我们用antd表单的时候，总是想着设计能够用antd上已经有的控件，这样我们才可以用getFieldsValue获取对应的值，如果表单里面的的组件是一个不常见的组件，我们最初想法是不能设置initialValue的，或者说设置了
+                            前言js 匹配是 js 中比较重要的一个概念，我们在工作中经常用到，但是往往都是记得不是很清楚，或者有些遗忘，这次记录总结一下，让自己加深一下印象，同时也会小伙伴们提供查阅资料的地方
+正则表达式语法1：字面量形式let reg = /\bi
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-01
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-21
                         </span>
                         <span class="publish-author">
                             
@@ -678,8 +674,8 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/antd/" target="_blank">
-                        <span class="chip bg-color">antd</span>
+                    <a href="/tags/正则匹配/" target="_blank">
+                        <span class="chip bg-color">正则匹配</span>
                     </a>
                     
                 </div>
@@ -690,52 +686,46 @@ diff算法diff算法的使用在我们工作中有多，比如vscode的git管理
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/2019/07/12/浅谈执行上下文/">
+                <a href="/2018/09/01/antd form自定义表单/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="浅谈执行上下文">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="antd form表单自定义组件">
                         
-                        <span class="card-title">浅谈执行上下文</span>
+                        <span class="card-title">antd form表单自定义组件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言执行上下文是比较重要的概念，理解他有助于我们的对js理解，所以综合网上的资料，做好一个总结
-概念
-执行上下文
-变量对象
-活动对象
-
-执行上下文
-执行上下文我的理解是某个作用域的的执行环境，这个作用域可以是全局也可以是函数作用域，执行上下
+                            前言之前我们我们用antd表单的时候，总是想着设计能够用antd上已经有的控件，这样我们才可以用getFieldsValue获取对应的值，如果表单里面的的组件是一个不常见的组件，我们最初想法是不能设置initialValue的，或者说设置了
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            json_qiong
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/前端/" class="post-category" target="_blank">
+                                    前端
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/js/" target="_blank">
-                        <span class="chip bg-color">js</span>
-                    </a>
-                    
-                    <a href="/tags/执行上下文/" target="_blank">
-                        <span class="chip bg-color">执行上下文</span>
+                    <a href="/tags/antd/" target="_blank">
+                        <span class="chip bg-color">antd</span>
                     </a>
                     
                 </div>
